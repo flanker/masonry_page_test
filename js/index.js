@@ -13,7 +13,7 @@ $(function() {
 
   var show_loading = function() {
     isloading = true;
-    // $loading.height($(window).height());
+    $loading.height($(window).height());
     $loading.show();
   }
 
@@ -32,8 +32,13 @@ $(function() {
            images.push({image_url: item.media.m});
          });
          var images_dom = $($("#itemTemplate").render(images));
+         images_dom.each(function() {
+           var $item = $(this);
+           $item.imagesLoaded(function() {
+             $container.append($item).masonry('appended', $item, true);
+           });
+         });
          images_dom.imagesLoaded(function() {
-           $container.append(images_dom).masonry('appended', images_dom, true);
            hide_loading();
          });
        });
