@@ -15,12 +15,13 @@ $(function() {
     $.getJSON(
       'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=?',
        function(data) {
+         var images = [];
          $.each(data.items, function(i, item) {
-           var $item = $("<img class='item' />").attr("src", item.media.m);
-           $container.append($item);
-           $item.imagesLoaded(function() {
-             $container.masonry('appended', $item);
-           });
+           images.push({image_url: item.media.m});
+         });
+         var images_dom = $($("#itemTemplate").render(images));
+         images_dom.imagesLoaded(function() {
+             $container.append(images_dom).masonry('appended', images_dom, true);
          });
          isloading = false;
        });

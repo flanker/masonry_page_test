@@ -3,6 +3,7 @@
 <head>
   <title>nothing</title>
   <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="js/jsrender.js"></script>
   <script type="text/javascript" src="js/jquery.masonry.min.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <link rel="stylesheet" href="style.css" />
@@ -10,5 +11,9 @@
 <body>
   <div id="container">
   </div>
+  <script id="itemTemplate" type="text/x-jquery-tmpl">
+    <img class="item" src="{{=image_url}}" />
+  </script>
+
 </body>
 </html>
