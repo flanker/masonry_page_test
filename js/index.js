@@ -13,7 +13,6 @@ $(function() {
 
   var show_loading = function() {
     isloading = true;
-    $loading.height($(window).height());
     $loading.show();
   }
 
