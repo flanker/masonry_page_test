@@ -1,6 +1,7 @@
 $(function() {
 
   var $container = $("#container");
+  var $loading = $("#loading");
   var isloading = false;
 
   $container.imagesLoaded(function(){
@@ -10,8 +11,19 @@ $(function() {
     });
   });
 
-  var load_photos = function() {
+  var show_loading = function() {
     isloading = true;
+    // $loading.height($(window).height());
+    $loading.show();
+  }
+
+  var hide_loading = function() {
+    isloading = false;
+    $loading.hide();
+  }
+
+  var load_photos = function() {
+    show_loading();
     $.getJSON(
       'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=?',
        function(data) {
@@ -21,9 +33,9 @@ $(function() {
          });
          var images_dom = $($("#itemTemplate").render(images));
          images_dom.imagesLoaded(function() {
-             $container.append(images_dom).masonry('appended', images_dom, true);
+           $container.append(images_dom).masonry('appended', images_dom, true);
+           hide_loading();
          });
-         isloading = false;
        });
   };
 

@@ -6,7 +6,7 @@
   <script type="text/javascript" src="js/jsrender.js"></script>
   <script type="text/javascript" src="js/jquery.masonry.min.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style/style.css" />
 </head>
 <body>
   <div id="container">
@@ -14,6 +14,11 @@
   <script id="itemTemplate" type="text/x-jquery-tmpl">
     <img class="item" src="{{=image_url}}" />
   </script>
-
+  <div id="loading">
+    <div id="loading_content">
+      <img src="image/loading.gif" />
+      <span>loading...</span>
+    </div>
+  </div>
 </body>
 </html>
